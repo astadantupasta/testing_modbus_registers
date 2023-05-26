@@ -26,9 +26,9 @@ Meaning of the parameters:
 More information on the Modbus protocol and parameters [here](https://wiki.teltonika-networks.com/view/Monitoring_via_Modbus).
 
 ## Build
-1. Extract the zip file of this project, open it in Visual Studeio Code.
+1. Extract the zip file of this project, open it in Visual Studio Code.
 2. Locate the variable `router_name` in a file `main.py` and change the value to the name of the tested device.
-3. Execute command `python3 main.py`.
+3. Execute the command `python3 main.py`.
 
 
 
