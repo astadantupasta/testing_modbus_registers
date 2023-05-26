@@ -2,7 +2,7 @@ import main
 import csv
 from prettytable import PrettyTable
 from datetime import datetime
-import rp_container
+from modules import rp_container
 
 def print_to_csv():
     """Prints registers' data to csv file: router_name, reg_addr,
@@ -29,7 +29,7 @@ def get_file_name():
     """Composes a csv file name in a form: router_date_time.csv
     :return: file name 
     """
-    return main.router_name + datetime.now().strftime("_%Y-%m-%d_%H:%M:%S") + ".csv"
+    return "results/" + main.router_name + datetime.now().strftime("_%Y-%m-%d_%H:%M:%S") + ".csv"
 
 def print_to_terminal():
     """Prints required information to the terminal.

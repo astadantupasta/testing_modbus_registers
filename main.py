@@ -2,10 +2,10 @@
 from pyModbusTCP.client import ModbusClient
 from register_parameters import RegisterParameters
 import paramiko
-import print
-import read
-import error_handling
-import rp_container
+from modules import print
+from modules import read
+from modules import error_handling
+from modules import rp_container
 
 # Name of the router which is to be tested
 router_name = "RUTX11"

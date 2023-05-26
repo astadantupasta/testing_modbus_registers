@@ -1,7 +1,7 @@
 import main
-import error_handling
+from modules import error_handling
 import json
-import rp_container
+from modules import rp_container
 
 def read_data_from_json(file_name):
     """Read data from json file.
