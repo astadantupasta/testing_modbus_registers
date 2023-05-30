@@ -4,27 +4,27 @@ from pymodbus.constants import Endian
 import numpy as np
 
 class RegisterParameters:
-    """Keeps information about registers' parameters."""
+    # """Keeps information about registers' parameters."""
 
-    def __init__(self, required_value, reg_addr, reg_num, representation):
-        """ Initiation of RegisterParameters object.
+    # def __init__(self, required_value, reg_addr, reg_num, representation):
+    #     """ Initiation of RegisterParameters object.
 
-        :required_value: description of the value that needs to be found, e.g. System uptime
-        :reg_addr: address number from which information has to be started reading
-        :reg_num: number of registers that have to be read
-        :represantation: indicates the type of 'required_value' value representation, 
-        e.g. uint32, uint16, int32, float32, text
-        """
+    #     :required_value: description of the value that needs to be found, e.g. System uptime
+    #     :reg_addr: address number from which information has to be started reading
+    #     :reg_num: number of registers that have to be read
+    #     :represantation: indicates the type of 'required_value' value representation, 
+    #     e.g. uint32, uint16, int32, float32, text
+    #     """
         
-        self.required_value = required_value
-        self.reg_addr = reg_addr
-        self.reg_num = reg_num
-        self.representation = representation
-        self.router_command = ""
-        self.registers = []
-        self.decoded_registers_value = None
-        self.expected_decoded_result = None
-        self.passed_the_test = False
+    #     self.required_value = required_value
+    #     self.reg_addr = reg_addr
+    #     self.reg_num = reg_num
+    #     self.representation = representation
+    #     self.router_command = ""
+    #     self.registers = []
+    #     self.decoded_registers_value = None
+    #     self.expected_decoded_result = None
+    #     self.passed_the_test = False
 
     def __init__(self, dictionary):
         """ Initiation of RegisterParameters object from a dictionary.

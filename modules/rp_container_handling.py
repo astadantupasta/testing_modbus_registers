@@ -1,22 +1,22 @@
 from register_parameters import RegisterParameters
-import main
-import paramiko
-
-register_parameters = []
+from modules import ssh_connection_handling
 
 def dict_to_list_of_objects(data):
     """Returns a list of RegisterParameters classes, 
     converted from dictionary.
-
     :data: dictionary which was read from the json file
+    :return: list of RegisterParameters objects
     """
-    # List of all the RegisterParameters classes
+    register_parameters = []
 
     for dictionary in data['registerParameters']:
         register_parameters.append(RegisterParameters(dictionary))
 
-def count_passed_tests():
+    return register_parameters
+
+def count_passed_tests(register_parameters):
     """Counts how many tests have been passed.
+    :register_parameters: a list of RegisterParameters objects
     :return: number of passed tests
     """
     counter = 0
@@ -25,23 +25,19 @@ def count_passed_tests():
             counter += 1
     return counter
 
-def count_not_passed_tests():
+def count_not_passed_tests(register_parameters):
     """Counts how many tests have not been passed.
+    register_parameters: a list of RegisterParameters objects
     :return: number of tests that were not passed
     """
-    return len(register_parameters) - count_passed_tests()
+    return len(register_parameters) - count_passed_tests(register_parameters)
 
-def set_expected_results():
+def set_expected_results(register_parameters):
     """Executes shell commands for every parameter and sets the rceived
     values to RegisterParameters objects.
+    register_parameters: a list of RegisterParameters objects
     """
-    # Connect to router using ssh protocol
-    main.sshClient.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    main.sshClient.connect(hostname="192.168.1.1", username="root", password="Admin123")
 
-    # Execute commands and save the received results
     for parameter in register_parameters:
-        ssh_stdin, ssh_stdout, ssh_stderr = main.sshClient.exec_command(parameter.router_command)
-        ssh_stdin.close()
-        parameter.set_expected_decoded_result(ssh_stdout.read().decode('ascii').strip("\n"))
-    print(ssh_stdout.read().decode('ascii').strip("\n"))
+        ssh_stdout = ssh_connection_handling.execute_command(parameter.router_command)
+        parameter.set_expected_decoded_result(ssh_stdout)

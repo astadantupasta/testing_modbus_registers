@@ -1,17 +1,5 @@
 import main
-from modules import error_handling
-import json
-from modules import rp_container
-
-def read_data_from_json(file_name):
-    """Read data from json file.
-
-    :file_name: name of the json file
-    :return: dictionary read from the json file
-    """
-    with open(file_name, "r") as read_file:
-        data = json.load(read_file)
-    return data
+from modules import printing_errors
 
 def read_holding_registers(parameter):
     """modbusClient reads holding registers from a router.
@@ -27,14 +15,17 @@ def read_holding_registers(parameter):
     except ValueError as e: 
             print(e)
 
-    error_handling.print_modbus_errors()
+    printing_errors.print_modbus_errors(parameter.get_reg_addr()-1)
 
     return registers
 
-def read_all_registers():
+def read_all_registers(rp_container):
     """Reads registers of every parameter, saves the value and then decodes it.
     """
-    for parameter in rp_container.register_parameters:
+    if len(rp_container) == 0:
+        raise Exception("modules/read_registers.py, read_all_registers(): rp_container is empty.")
+
+    for parameter in rp_container:
 
         # Reading the registers from address 'reg_addr' to 'reg_addr + reg_nb'
         registers = read_holding_registers(parameter)
