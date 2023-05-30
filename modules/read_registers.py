@@ -16,7 +16,7 @@ def read_holding_registers(parameter, modbusClient):
     except ValueError as e: 
             print(e)
 
-    printing_errors.print_modbus_errors(parameter.get_reg_addr()-1, modbusClient)
+    printing_errors.print_modbus_errors(modbusClient, parameter.get_reg_addr()-1)
 
     return registers
 

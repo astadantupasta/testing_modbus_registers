@@ -2,6 +2,7 @@
     "hostname": "192.168.1.1",
     "username": "root",
     "password": "Admin123",
+    "router_name": "RUTX11",
     "registerParameters" : [
         {"required_value":"System uptime", "reg_addr":1, "reg_num":2, "representation":"uint32", "router_command":"cat /proc/uptime | cut -d '.' -f 1"},
         {"required_value":"Mobile signal strength", "reg_addr":3, "reg_num":2, "representation":"int32", "router_command":"gsmctl -q | grep RSSI | cut -d ' ' -f 2"},

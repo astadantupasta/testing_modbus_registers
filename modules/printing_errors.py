@@ -1,6 +1,6 @@
 import main
 
-def print_modbus_errors(reg_addr, modbusClient):
+def print_modbus_errors(modbusClient, reg_addr=""):
     """Prints errors and exceptions recorded in Modbus modbusClient object's variables.
     :reg_addr: address of the register for which errors are being printed.
     :modbusClient: modbus Master object

@@ -5,7 +5,7 @@ def dict_to_list_of_objects(data, default_hostname="192.168.1.1", default_userna
     """Returns a list of RegisterParameters classes, 
     converted from dictionary.
     :data: dictionary which was read from the json file
-    :return: list of RegisterParameters objects, hostname, username, password
+    :return: list of RegisterParameters objects, hostname, username, password, router_name
     """
     register_parameters = []
     hostname = str(data['hostname']) if len(str(data['hostname'])) else default_hostname
@@ -15,7 +15,7 @@ def dict_to_list_of_objects(data, default_hostname="192.168.1.1", default_userna
     for dictionary in data['registerParameters']:
         register_parameters.append(RegisterParameters(dictionary))
 
-    return register_parameters, hostname, username, password
+    return register_parameters, hostname, username, password, str(data['router_name'])
 
 def count_passed_tests(register_parameters):
     """Counts how many tests have been passed.
