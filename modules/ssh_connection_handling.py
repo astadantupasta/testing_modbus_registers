@@ -55,3 +55,7 @@ def execute_command(command):
         print("Executing ssh command failed. Command: " + command)
 
     return ssh_stdout.read().decode('ascii').strip("\n")
+
+def get_device_hostname():
+    """Finds device hostname."""
+    return execute_command("cat /proc/sys/kernel/hostname")
