@@ -16,6 +16,8 @@ def print_to_terminal(router_name, rp_container):
     print("Passed tests: " + CGREEN + str(rp_container_handling.count_passed_tests(rp_container)) + CEND)
     print("Not passed tests: " + CRED + str(rp_container_handling.count_not_passed_tests(rp_container)) + CEND)
     print("Num of configurations: " + str(len(rp_container)))
+    print("End of the test!")
+    print("\n\n")
 
 def print_data_to_table(rp_container):
     """Prints a list of RegisterParameters to table.

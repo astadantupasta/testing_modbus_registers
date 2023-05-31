@@ -12,4 +12,3 @@ def read_data_from_json(file_name):
         return data
     except FileNotFoundError:
         print("No such file: " + file_name)
-        exit()

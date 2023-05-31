@@ -1,0 +1,53 @@
+Tested device: RUTX11
+Register address,Representation,Expected value,Decoded value,Passed the test
+0,uint32,4331,4331,True
+2,int32,-77,-77,True
+4,int32,360,360,True
+6,text,RUTX11,RUTX11,True
+22,text,TAVO BITE BITE,TAVO BITE BITE,True
+38,text,,1114919838,False
+54,text,001E423C0F3E,001E423C0F3E,True
+70,text,RUTX11,RUTX11,True
+86,text,,sim1,False
+102,text,"Registered, home","Registered, home",True
+118,text,LTE,LTE,True
+134,int32,,,False
+136,int32,,,False
+138,uint32,,10.12.160.212,False
+140,int32,,,False
+142,float32,,,False
+144,float32,,,False
+146,text,,,False
+178,int32,,,False
+180,int32,,,False
+182,float32,,,False
+184,uint32,2497896,776399,False
+186,uint32,2047629,542816,False
+188,uint32,,2715635,False
+190,uint32,,2255166,False
+192,uint32,,20895792,False
+194,uint32,,17028578,False
+196,uint32,,2497119,False
+198,uint32,,2047109,False
+200,uint16,,,False
+201,uint16,,,False
+204,uint16,1,1,True
+291,uint32,10225708,10224931,False
+293,uint32,6737279,6736759,False
+295,uint32,,20895792,False
+297,uint32,,17028578,False
+299,uint32,0,0,True
+301,uint32,0,0,True
+303,uint32,,0,False
+305,uint32,,0,False
+307,uint32,,24648,False
+309,uint32,,26403,False
+311,uint32,,0,False
+313,uint32,,0,False
+315,uint32,24648,24648,True
+317,uint32,26403,26403,True
+319,uint32,,24648,False
+321,uint32,,26403,False
+323,uint16,,0,False
+324,uint16,,0,False
+347,text,246020102487106,246020102487106,True

@@ -1,60 +1,72 @@
 import paramiko
+from modules import error_handling
+import time
 
 sshClient = paramiko.SSHClient()
 
-def connect_to_router(hostname, username, password):
-    """Connecto to the device using SSH protocol.
+def connect_to_router(hostname, username, password, waiting_seconds=5, repetition_times=10):
+    """Connect to the device using SSH protocol.
+    In case of connection error, code is stopped for waiting_seconds
+    seconds repetition_times times
     :hostname: ip address of the device
     :username: username for the ssh connection
     :password: password for the ssh connection
+    :waiting_seconds: number of seconds that the code has to be stopped
+    for until the next attempt to execute the command
+    :repetition_times: number of repetitions until the code is exited
     """
     sshClient.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    try:
-        sshClient.connect(hostname=hostname, username=username, password=password)
-    except:
-        print("Ssh connection refused.")
-        exit()
+    for i in range(repetition_times):
+        try:
+            sshClient.connect(hostname=hostname, username=username, password=password)
+            break
+        except ConnectionError as e:
+            print("Ssh connection error." + str(e))
+            print("reconnecting...")
+            time.sleep(waiting_seconds)
+        except Exception as e:
+            print("Ssh connection error occured: " + str(e))
+            print("reconnecting...")
+            time.sleep(waiting_seconds)
 
 def disconnect_from_router():
-    sshClient.close()
+    if sshClient.get_transport() is not None:
+        sshClient.close()
 
+def execute_command(command, waiting_seconds=5, repetition_times=10):
+    """Executes command on the device. In case of connection error, 
+    code is stopped for waiting_seconds seconds repetition_times times
+    :command: command to execute
+    :waiting_seconds: number of seconds that the code has to be stopped
+    for until the next attempt to execute the command
+    :repetition_times: number of repetitions until the code is exited
+    :return: result of the command
+    """
+    for i in range(repetition_times):
+        try:
+            ssh_stdin, ssh_stdout, ssh_stderr = sshClient.exec_command(command)
+            ssh_stdin.close()
+            break
+        except:
+            print("Executing ssh command failed. Command: " + command)
+            print("reexecuting...")
+            time.sleep(waiting_seconds)
+
+    return ssh_stdout.read().decode('ascii').strip("\n")
 
 def check_connected_router_name(router_name):
     """Checks if products's name is as indicated in variable 'router_name'.
     :router_name: name of the router
     """
-    try:
-        ssh_stdin, ssh_stdout, ssh_stderr = sshClient.exec_command("cat /etc/config/system | grep routername | awk '{print $NF}' | sed \"s/'//g\"")
-        ssh_stdin.close()
-        if ssh_stdout.read().decode('ascii').strip("\n") != router_name:
-            raise Exception("Connected product is not as indicated in variable 'router_name'")
-    except:
-        print("Reading router name failed.")
-        exit()
+    ssh_stdout = execute_command("cat /etc/config/system | grep routername | awk '{print $NF}' | sed \"s/'//g\"")
+    if ssh_stdout != router_name:
+        raise Exception("Connected product is not as indicated in variable 'router_name'")
 
 def check_modem():
     """Checks if product has a modem."""
-    try:
-        ssh_stdin, ssh_stdout, ssh_stderr = sshClient.exec_command("gsmctl -a")
-        ssh_stdin.close()
-        if ssh_stdout.read().decode('ascii').strip("\n") == "":
-            raise Exception("The connected product does not have a modem.")
-    except:
-        print("Reading modem name failed.")
-        exit()
-
-def execute_command(command):
-    """Executes command on the device.
-    :command: command to execute
-    :return: result of the command
-    """
-    try:
-        ssh_stdin, ssh_stdout, ssh_stderr = sshClient.exec_command(command)
-        ssh_stdin.close()
-    except:
-        print("Executing ssh command failed. Command: " + command)
-
-    return ssh_stdout.read().decode('ascii').strip("\n")
+    ssh_stdout = execute_command("gsmctl -a")
+    if ssh_stdout == "":
+        raise Exception("The connected product does not have a modem.")
 
 def get_device_hostname():
     """Finds device hostname."""
