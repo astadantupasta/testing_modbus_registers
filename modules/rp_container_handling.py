@@ -15,7 +15,7 @@ def dict_to_list_of_objects(data, default_hostname="192.168.1.1", default_userna
     for dictionary in data['registerParameters']:
         register_parameters.append(RegisterParameters(dictionary))
 
-    return register_parameters, hostname, username, password, str(data['router_name'])
+    return register_parameters, hostname, username, password
 
 def count_passed_tests(register_parameters):
     """Counts how many tests have been passed.
