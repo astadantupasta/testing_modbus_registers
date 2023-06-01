@@ -17,7 +17,7 @@ command.
 ## Configuration file
 All information about tested device and modbus registers is stored in a JSON configuration file `parameters.json`.
 
-First of all, all the configurations are categorised according to the name of the device (e.g., `RUTX11`, `RUT956` and etc.). Every device has its `hostname`, `username`, `password` and `registerParameters`. The first three configurations (hostname, username, and password) have to be set correctly before starting the test. If these configurations are not set at all (left empty), then the default values are used (*192.168.1.1*, *root*, *Admin123* accordingly).
+First of all, all the configurations are categorised according to the name of the device (e.g., `RUTX11`, `RUT956` and etc.). Every device has its `hostname`, `username`, `password` and `registerParameters`. The first three configurations (hostname, username, and password) have to be set correctly before starting the test. If these configurations are not set at all (left empty), then the default values are used (`192.168.1.1`, `root`, `Admin123` accordingly).
 
 Every device has a different set of `registerParameters`. Meanings of their values:
 1. `required_value` describes the meaning of the decoded registers' value.
@@ -34,7 +34,7 @@ An example of the configuration file:
 ## Build
 1. Extract the zip file of this project, open it in Visual Studio Code.
 2. Make sure that the configurations for connection are written correctly in the configuration file *parameters.json*: locate the name of the router you are about to test, change *hostname*, *username*, *password* to the correct ones.
-3. Execute the command `python3 main.py -n *router_name*`, where *router_name* is the name of the router, e.g., *RUTX11*, *RUT956*.
+3. Execute the command `python3 main.py -n *router_name*`, where *router_name* is the name of the router, e.g., `RUTX11`, `RUT956`.
 
 
 
