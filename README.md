@@ -3,7 +3,7 @@
 The aim of the automated test is to test all Modbus registers and check their values correctness.
 The results are printed to the terminal as well as to the CSV file. All information about Modbus registers is stored in a JSON configuration file.
 
-The test take the name of the router as a flag using command line, reads the registers of the indictaed router, decodes them, checks if the decoded values correspond with the expected values (expected values are read from the device using the ssh protocol), and calculates simple statistics for the test.
+The test takes the name of the router as a flag using the command line, reads the registers of the indicated router, decodes them, checks if the decoded values correspond with the expected values (expected values are read from the device using the ssh protocol), and calculates simple statistics for the test.
 
 ## Python library dependencies
 
