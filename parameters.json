@@ -52,8 +52,8 @@
             {"required_value":"Mobile data sent last week (SIM2)", "reg_addr":318, "reg_num":2, "representation":"uint32", "router_command":"ubus call mdcollect get '{\"period\":\"week\",\"sim\":2}' | grep tx | awk '{print $NF}' | cut -d ',' -f 1"},
             {"required_value":"Mobile data received last month (SIM2)", "reg_addr":320, "reg_num":2, "representation":"uint32", "router_command": "ubus call mdcollect get '{\"period\":\"month\",\"sim\":2}' | grep rx | awk '{print $NF}' | cut -d ',' -f 1"},
             {"required_value":"Mobile data sent last month (SIM2)", "reg_addr":322, "reg_num":2, "representation":"uint32", "router_command":"ubus call mdcollect get '{\"period\":\"month\",\"sim\":2}' | grep tx | awk '{print $NF}' | cut -d ',' -f 1"},
-            {"required_value":"Digital non-isolated input (4 PIN connector)", "reg_addr":324, "reg_num":1, "representation":"uint16"},
-            {"required_value":"Digital open collector output (4 PIN collector)", "reg_addr":325, "reg_num":1, "representation":"uint16"},
+            {"required_value":"Digital non-isolated input (4 PIN connector)", "reg_addr":324, "reg_num":1, "representation":"uint16", "router_command": "ubus call ioman.gpio.din1 status | grep value | awk '{print $NF}' | sed 's/\"//g' | cut -d ',' -f 1"},
+            {"required_value":"Digital open collector output (4 PIN collector)", "reg_addr":325, "reg_num":1, "representation":"uint16", "router_command": "ubus call ioman.gpio.dout1 status | grep value | awk '{print $NF}' | sed 's/\"//g' | cut -d ',' -f 1"},
             {"required_value":"IMSI", "reg_addr":348, "reg_num":16, "representation":"text", "router_command": "ubus call gsm.modem0 info | grep imsi | awk '{print $NF}' | sed 's/\"//g' | cut -d ',' -f 1"}
         ]
     },
@@ -111,8 +111,8 @@
             {"required_value":"Mobile data sent last week (SIM2)", "reg_addr":318, "reg_num":2, "representation":"uint32", "router_command":"ubus call mdcollect get '{\"period\":\"week\",\"sim\":2}' | grep tx | awk '{print $NF}' | cut -d ',' -f 1"},
             {"required_value":"Mobile data received last month (SIM2)", "reg_addr":320, "reg_num":2, "representation":"uint32", "router_command": "ubus call mdcollect get '{\"period\":\"month\",\"sim\":2}' | grep rx | awk '{print $NF}' | cut -d ',' -f 1"},
             {"required_value":"Mobile data sent last month (SIM2)", "reg_addr":322, "reg_num":2, "representation":"uint32", "router_command":"ubus call mdcollect get '{\"period\":\"month\",\"sim\":2}' | grep tx | awk '{print $NF}' | cut -d ',' -f 1"},
-            {"required_value":"Digital non-isolated input (4 PIN connector)", "reg_addr":324, "reg_num":1, "representation":"uint16"},
-            {"required_value":"Digital open collector output (4 PIN collector)", "reg_addr":325, "reg_num":1, "representation":"uint16"},
+            {"required_value":"Digital non-isolated input (4 PIN connector)", "reg_addr":324, "reg_num":1, "representation":"uint16", "router_command":"ubus call ioman.gpio.din1 status | grep value | awk '{print $NF}' | sed 's/\"//g' | cut -d ',' -f 1"},
+            {"required_value":"Digital open collector output (4 PIN collector)", "reg_addr":325, "reg_num":1, "representation":"uint16", "router_command":"ubus call ioman.gpio.dout1 status | grep value | awk '{print $NF}' | sed 's/\"//g' | cut -d ',' -f 1"},
             {"required_value":"IMSI", "reg_addr":348, "reg_num":16, "representation":"text", "router_command": "ubus call gsm.modem0 info | grep imsi | awk '{print $NF}' | sed 's/\"//g' | cut -d ',' -f 1"}
         ]
     }
