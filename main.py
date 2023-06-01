@@ -40,5 +40,5 @@ def main(flag_router_name):
 if __name__ == "__main__":
   flags = flags_handling.get_flags()
 
-  #while True:
-  main(flags.name)
+  while True:
+    main(flags.name)

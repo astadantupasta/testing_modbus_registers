@@ -1,0 +1,53 @@
+Tested device: RUT956
+Register address,Representation,Expected value,Decoded value,Passed the test
+0,uint32,1093,,False
+2,int32,,,False
+4,int32,310,,False
+6,text,RUT956,,False
+22,text,ERROR: Couldn't retrieve data,,False
+38,text,,,False
+54,text,001E426173C1,,False
+70,text,RUT956,,False
+86,text,,,False
+102,text,ERROR: Couldn't retrieve data,,False
+118,text,No service,,False
+134,int32,,,False
+136,int32,,,False
+138,uint32,,,False
+140,int32,,,False
+142,float32,,,False
+144,float32,,,False
+146,text,,,False
+178,int32,,,False
+180,int32,,,False
+182,float32,,,False
+184,uint32,368378,,False
+186,uint32,234048,,False
+188,uint32,,,False
+190,uint32,,,False
+192,uint32,,,False
+194,uint32,,,False
+196,uint32,,,False
+198,uint32,,,False
+200,uint16,,,False
+201,uint16,,,False
+204,uint16,1,,False
+291,uint32,368378,,False
+293,uint32,234048,,False
+295,uint32,368378,,False
+297,uint32,234048,,False
+299,uint32,0,,False
+301,uint32,0,,False
+303,uint32,,,False
+305,uint32,,,False
+307,uint32,,,False
+309,uint32,,,False
+311,uint32,,,False
+313,uint32,,,False
+315,uint32,0,,False
+317,uint32,0,,False
+319,uint32,0,,False
+321,uint32,0,,False
+323,uint16,,,False
+324,uint16,,,False
+347,text,,,False
