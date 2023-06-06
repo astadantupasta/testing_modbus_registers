@@ -15,6 +15,7 @@ pip3 install *package_name*
 command.
 
 Versions used:
+python3 3.10.6
 pyModbusTCP 0.2.0
 pymodbus 3.2.2
 paramiko 2.9.3
