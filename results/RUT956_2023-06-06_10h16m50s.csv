@@ -1,8 +1,8 @@
 Tested device: RUT956
 Register address,Representation,Expected value,Decoded value,Passed the test
-0,uint32,126,126,True
+0,uint32,3182,3182,True
 2,int32,,,False
-4,int32,260,260,True
+4,int32,310,310,True
 6,text,RUT956,RUT956,True
 22,text,ERROR: Couldn't retrieve data,,False
 38,text,,600012598,False

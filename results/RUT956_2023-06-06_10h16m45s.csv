@@ -1,6 +1,6 @@
 Tested device: RUT956
 Register address,Representation,Expected value,Decoded value,Passed the test
-0,uint32,2837,2837,True
+0,uint32,3177,3177,True
 2,int32,,,False
 4,int32,310,310,True
 6,text,RUT956,RUT956,True
