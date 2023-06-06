@@ -1,0 +1,59 @@
+Tested device: RUTX11
+Register address,Representation,Expected value,Decoded value,Passed the test
+2,uint32,306,307,False
+4,int32,-85,-85,True
+6,int32,260,260,True
+8,text,RUTX11,RUTX11,True
+24,text,ERROR: Couldn't retrieve data,,False
+40,text,1114919838,1114919838,True
+56,text,001E423C0F3E,001E423C0F3E,True
+72,text,RUTX11,RUTX11,True
+88,text,sim1,sim1,True
+104,text,Not registered,Searching,False
+120,text,No service,No service,True
+136,int32,,,False
+138,int32,,,False
+140,uint32,,,False
+142,int32,,,False
+144,float32,,,False
+146,float32,,,False
+148,text,,,False
+180,int32,,,False
+182,int32,,,False
+184,float32,,,False
+186,uint32,263375,263375,True
+188,uint32,195462,195462,True
+190,uint32,,263375,False
+192,uint32,,195462,False
+194,uint32,,1195663,False
+196,uint32,,1073907,False
+198,uint32,,263375,False
+200,uint32,,195462,False
+202,uint16,,,False
+203,uint16,,,False
+206,uint16,1,1,True
+293,uint32,4266279,4266279,True
+295,uint32,3619528,3619528,True
+297,uint32,22664952,22664952,True
+299,uint32,18600997,18600997,True
+301,uint32,0,0,True
+303,uint32,0,0,True
+305,uint32,,0,False
+307,uint32,,0,False
+309,uint32,,0,False
+311,uint32,,0,False
+313,uint32,,0,False
+315,uint32,,0,False
+317,uint32,0,0,True
+319,uint32,0,0,True
+321,uint32,24648,24648,True
+323,uint32,26403,26403,True
+325,uint16,0,0,True
+326,uint16,0,0,True
+349,text,,,False
+349,text,,,False
+365,uint32,,1686030675,False
+367,text,,2023-06-06T08:51,False
+379,text,,2023-06-06T05:51,False
+395,uint8,,,False
+398,text,,,True

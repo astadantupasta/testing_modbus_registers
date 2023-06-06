@@ -38,6 +38,14 @@ class RegisterParameters:
 
         :expected_decoded_result: the value that is received from a router executing a command.
         """
+
+        # Convert input value if the required_value is 'Relay output status'
+        if (self.required_value == 'Relay output status') | (self.required_value == 'ACL activity'):
+            if (expected_decoded_result == 'open') | (expected_decoded_result == 'active'):
+                expected_decoded_result = 0
+            else:
+                expected_decoded_result = 1
+
         if expected_decoded_result != "":
             match self.representation:
                 case 'uint16':
@@ -79,6 +87,9 @@ class RegisterParameters:
     def decode_registers(self):
         """Decodes registers' integer values to desired self.representation"""
         match self.representation:
+            case 'uint8':
+                if self.get_required_value == 'LAN IP':
+                    self.convert_registers_to_IP()
             case 'uint16':
                 self.decoded_registers_value = self.registers[0]
 
