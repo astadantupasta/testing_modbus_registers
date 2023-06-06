@@ -15,11 +15,11 @@ pip3 install *package_name*
 command.
 
 Versions used:
-python3 3.10.6
-pyModbusTCP 0.2.0
-pymodbus 3.2.2
-paramiko 2.9.3
-prettytable 3.7.0
+python3 3.10.6,
+pyModbusTCP 0.2.0,
+pymodbus 3.2.2,
+paramiko 2.9.3,
+prettytable 3.7.0,
 numpy 1.24.3
 
 ## Configuration file
