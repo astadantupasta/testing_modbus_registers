@@ -2,6 +2,9 @@ import paramiko
 import time
 
 sshClient = paramiko.SSHClient()
+this_hostname = ""
+this_username = ""
+this_password = ""
 
 def connect_to_router(hostname, username, password, waiting_seconds=5, repetition_times=10):
     """Connect to the device using SSH protocol.
@@ -14,6 +17,10 @@ def connect_to_router(hostname, username, password, waiting_seconds=5, repetitio
     for until the next attempt to execute the command
     :repetition_times: number of repetitions until the code is exited
     """
+    this_hostname = hostname
+    this_username = username
+    this_password = password
+
     sshClient.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     for i in range(repetition_times):
         try:
@@ -49,6 +56,7 @@ def execute_command(command, waiting_seconds=5, repetition_times=10):
         except:
             print("Executing ssh command failed. Command: " + command)
             print("reexecuting...")
+            connect_to_router(this_hostname, this_username, this_password)
             time.sleep(waiting_seconds)
 
     return ssh_stdout.read().decode('ascii').strip("\n")

@@ -1,22 +1,23 @@
 # Imports
-from pyModbusTCP.client import ModbusClient
 from modules import print_to_file
 from modules import print_to_terminal
 from modules import read_from_file
 from modules import read_registers
-from modules import printing_errors
 from modules import rp_container_handling
 from modules import ssh_connection_handling
 from modules import flags_handling
+from modules import modbus_connection_handling
 
 def main(flag_router_name):
     # Read data from a file and append to a list of RegisterParameters objects
     file_data = read_from_file.read_data_from_json("parameters.json", flag_router_name)
-    rp_container, hostname, username, password = rp_container_handling.dict_to_list_of_objects(file_data)
-    modbusClient = ModbusClient(host=hostname, port=502, auto_open=True, auto_close=True)
+    rp_container, hostname, username, password, port = rp_container_handling.dict_to_list_of_objects(file_data)
+    modbusClient = modbus_connection_handling.create_modbus_client(hostname, port, username)
 
     # Print any modbus errors
-    printing_errors.print_modbus_errors(modbusClient)
+    modbus_connection_handling.print_modbus_errors(modbusClient)
+
+    modbus_connection_handling.connect_to_modbus_client(modbusClient, 0)
     
     # Check if the connected device is as indicated and
     # if the device has a modem
@@ -41,4 +42,4 @@ if __name__ == "__main__":
   flags = flags_handling.get_flags()
 
   while True:
-    main(flags.name)
+    main(flags.name.upper())

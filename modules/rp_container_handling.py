@@ -1,7 +1,7 @@
 from register_parameters import RegisterParameters
 from modules import ssh_connection_handling
 
-def dict_to_list_of_objects(data, default_hostname="192.168.1.1", default_username="root", default_password="Admin123"):
+def dict_to_list_of_objects(data, default_hostname="192.168.1.1", default_username="root", default_password="Admin123", default_port=502):
     """Returns a list of RegisterParameters classes, 
     converted from dictionary.
     :data: dictionary which was read from the json file
@@ -11,11 +11,12 @@ def dict_to_list_of_objects(data, default_hostname="192.168.1.1", default_userna
     hostname = str(data['hostname']) if len(str(data['hostname'])) else default_hostname
     username = str(data['username']) if len(str(data['username'])) else default_username
     password = str(data['password']) if len(str(data['password'])) else default_password
+    port = int(data['port']) if len(str(data['port'])) else default_port
 
     for dictionary in data['registerParameters']:
         register_parameters.append(RegisterParameters(dictionary))
 
-    return register_parameters, hostname, username, password
+    return register_parameters, hostname, username, password, port
 
 def count_passed_tests(register_parameters):
     """Counts how many tests have been passed.

@@ -32,4 +32,4 @@ def get_file_name(router_name):
     if len(router_name) < 5:
         raise("Router name indicated inproperly.")
     
-    return "results/" + router_name + datetime.now().strftime("_%Y-%m-%d_%H:%M:%S") + ".csv"
+    return "results/" + router_name + datetime.now().strftime("_%Y-%m-%d_%H.%M.%S") + ".csv"
