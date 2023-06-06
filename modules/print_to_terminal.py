@@ -30,7 +30,7 @@ def print_data_to_table(rp_container):
 
     for p in rp_container:
         t.add_row([p.required_value,
-                   p.reg_addr - 1, 
+                   p.reg_addr + 1, 
                    p.reg_num, 
                    p.representation, 
                    p.decoded_registers_value, 

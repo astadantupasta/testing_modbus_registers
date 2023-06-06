@@ -18,7 +18,7 @@ def print_to_csv(router_name, rp_container):
                          'Passed the test'])
         
         for p in rp_container:
-            writer.writerow([p.reg_addr - 1,
+            writer.writerow([p.reg_addr + 1,
                              p.representation,
                              p.expected_decoded_result,
                              p.decoded_registers_value,
