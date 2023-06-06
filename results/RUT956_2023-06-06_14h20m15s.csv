@@ -1,7 +1,7 @@
 Tested device: RUT956
 Register address,Representation,Expected value,Decoded value,Passed the test
-2,uint32,1171,1170,False
-4,int32,-63,-71,False
+2,uint32,695,695,True
+4,int32,-75,-75,True
 6,int32,320,320,True
 8,text,RUT956,RUT956,True
 24,text,TAVO BITE BITE,TAVO BITE BITE,True
@@ -13,7 +13,7 @@ Register address,Representation,Expected value,Decoded value,Passed the test
 120,text,LTE,LTE,True
 136,int32,0,0,True
 138,int32,0,0,True
-140,uint32,,10.11.210.56,False
+140,uint32,,10.11.149.124,False
 142,int32,0,0,True
 144,float32,,,False
 146,float32,,,False
@@ -21,21 +21,21 @@ Register address,Representation,Expected value,Decoded value,Passed the test
 180,int32,,,False
 182,int32,,,False
 184,float32,,,False
-186,uint32,334408,334408,True
-188,uint32,209962,209962,True
-190,uint32,,334408,False
-192,uint32,,209962,False
-194,uint32,,334408,False
-196,uint32,,209962,False
-198,uint32,,334408,False
-200,uint32,,209962,False
+186,uint32,783547,783547,True
+188,uint32,473548,473548,True
+190,uint32,,783547,False
+192,uint32,,473548,False
+194,uint32,,783547,False
+196,uint32,,473548,False
+198,uint32,,783547,False
+200,uint32,,473548,False
 202,uint16,0,0,True
 203,uint16,0,0,True
 206,uint16,1,1,True
-293,uint32,334408,334408,True
-295,uint32,209962,209962,True
-297,uint32,719661,719661,True
-299,uint32,454834,454834,True
+293,uint32,783547,783547,True
+295,uint32,473548,473548,True
+297,uint32,1168800,1168800,True
+299,uint32,718420,718420,True
 301,uint32,0,0,True
 303,uint32,0,0,True
 305,uint32,,0,False
@@ -51,11 +51,11 @@ Register address,Representation,Expected value,Decoded value,Passed the test
 325,uint16,0,0,True
 326,uint16,0,0,True
 329,text,1-1.4,1-1.4,True
-346,uint16,0,1,False
-347,float32,0.0,0.0,True
+346,uint16,1,0,False
+347,float32,,0.0,False
 349,text,246020102487106,246020102487106,True
-365,uint32,1686054363,1686043559,False
-367,text,,2023-06-06T12:25,False
-379,text,,2023-06-06T09:25,False
-395,uint8,,,False
+365,uint32,1686061215,1686050410,False
+367,text,2023-06-06T14:20,2023-06-06T14:2,False
+379,text,2023-06-06T11:20,2023-06-06T11:2,False
+395,uint8,192.168.1.1,,False
 398,text,,,True

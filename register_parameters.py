@@ -41,7 +41,7 @@ class RegisterParameters:
 
         # Convert input value if the required_value is 'Relay output status'
         if (self.required_value == 'Relay output status') | (self.required_value == 'ACL activity'):
-            if (expected_decoded_result == 'open') | (expected_decoded_result == 'active'):
+            if (expected_decoded_result == 'open') | (expected_decoded_result == 'inactive'):
                 expected_decoded_result = 0
             else:
                 expected_decoded_result = 1
@@ -88,7 +88,7 @@ class RegisterParameters:
         """Decodes registers' integer values to desired self.representation"""
         match self.representation:
             case 'uint8':
-                if self.get_required_value == 'LAN IP':
+                if self.get_required_value() == 'LAN IP':
                     self.convert_registers_to_IP()
             case 'uint16':
                 self.decoded_registers_value = self.registers[0]
@@ -128,7 +128,7 @@ class RegisterParameters:
         """
         list = self.registers.copy()
 
-        if self.required_value != 'Current WAN IP address':
+        if (self.required_value != 'Current WAN IP address') & (self.required_value != 'LAN IP'):
             raise Exception("Method 'convert_registers_to_IP': "
                             + "'required_value' has to be 'Current WAN IP address'.")
 
