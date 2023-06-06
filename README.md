@@ -14,6 +14,13 @@ pip3 install *package_name*
 ```
 command.
 
+Versions used:
+pyModbusTCP 0.2.0
+pymodbus 3.2.2
+paramiko 2.9.3
+prettytable 3.7.0
+numpy 1.24.3
+
 ## Configuration file
 All information about tested device and modbus registers is stored in a JSON configuration file `parameters.json`.
 
@@ -33,7 +40,7 @@ An example of the configuration file:
 
 ## Build
 1. Extract the zip file of this project, open it in Visual Studio Code.
-2. Make sure that the configurations for connection are written correctly in the configuration file *parameters.json*: locate the name of the router you are about to test, change *hostname*, *username*, *password* to the correct ones.
+2. Make sure that the configurations for connection are written correctly in the configuration file *parameters.json*: locate the name of the router you are about to test, change *hostname*, *username*, *password*, *port* to the correct ones.
 3. Execute the command `python3 main.py -n *router_name*`, where *router_name* is the name of the router, e.g., `RUTX11`, `RUT956`.
 
 
